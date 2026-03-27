@@ -1,0 +1,64 @@
+"use client";
+
+import * as React from "react";
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from "@/components/ui/sidebar";
+import { ShoppingBag } from "lucide-react";
+
+export function VersionSwitcher({ versions, defaultVersion }) {
+  const [selectedVersion, setSelectedVersion] = React.useState(defaultVersion);
+
+  return (
+    <SidebarMenu>
+      <SidebarMenuItem>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <SidebarMenuButton
+              size="lg"
+              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+            >
+              <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-cyan-300 text-white">
+                <ShoppingBag className="size-4 text-white" />
+              </div>
+              <div className="flex flex-col gap-0.5 leading-none">
+                <span className="font-extrabold text-lg text-blue-400">
+                  HRD <span className="text-blue-700">SHOP</span>
+                </span>
+                <span className="uppercase text-sm font-bold text-gray-500">
+                  Admin V2.0
+                </span>
+              </div>
+              {/* <ChevronsUpDownIcon className="ml-auto" /> */}
+            </SidebarMenuButton>
+          </DropdownMenuTrigger>
+          {/* <DropdownMenuContent
+            className="w-(--radix-dropdown-menu-trigger-width)"
+            align="start"
+          >
+            {versions.map((version) => (
+              <DropdownMenuItem
+                key={version}
+                onSelect={() => setSelectedVersion(version)}
+              >
+                v{version}{" "}
+                {version === selectedVersion && (
+                  <CheckIcon className="ml-auto" />
+                )}
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent> */}
+        </DropdownMenu>
+      </SidebarMenuItem>
+    </SidebarMenu>
+  );
+}
